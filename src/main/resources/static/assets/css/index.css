@@ -1,0 +1,36 @@
+/*各菜单栏的样式*/
+     body{
+				//background-color: #8cd142;
+				color: #ffffff; 
+			}
+			#header{
+				height: 0.88rem;
+				font-size: 0.3rem;
+				font-family: "微软雅黑";
+				background-color: #00a0e9;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 0.3rem;
+				color: #ffffff;
+			}
+			#header img{
+				width: 0.17rem;
+				height: 0.28rem;
+			}
+		
+			a{
+				color: #FFFFFF;
+			}
+			/*选项颜色设计*/
+			.red{
+				color: #e53737;
+			}
+			.a{
+				background-color: #22d8bc;
+			}
+			.b{
+				background-color: #22c0d8;
+			}
+			.c{
+				background-color: #00a0e9;
+			}

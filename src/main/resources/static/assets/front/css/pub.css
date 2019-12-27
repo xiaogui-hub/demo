@@ -1,0 +1,41 @@
+.pic3 p {
+    font-size: 31px;
+    letter-spacing: 17px;
+}
+
+input[name=textContent] {
+    width: 186px;
+    height: 29px;
+    font-size: 16px;
+    padding-left: 20px;
+    border: 0px;
+    border: 1px #b0b0b0 solid;
+    border-radius: calc(20px);
+    margin-top: 14px;
+}
+
+
+.republic-wrap .searchp input[type=image] {
+    /* top: 0px; */
+}
+
+.searchp input[type=image] {
+    width: 17px;
+    height: 17px;
+    position: relative;
+    top: 4px;
+    left: -28px;
+}
+
+.mid-list .bar li {
+  
+    overflow: hidden;
+}
+.Hui-article-box {
+    position: absolute;
+ 
+    left: 0px;
+    top:0px
+    
+  
+}

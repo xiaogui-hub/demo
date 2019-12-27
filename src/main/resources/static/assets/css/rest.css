@@ -1,0 +1,75 @@
+* {
+	margin: 0;
+	padding: 0
+}
+
+body,h1,h2,h3,h4,h5,h6,hr,p,dl,dt,dd,ul,ol,li,form,fieldset,legend,button,input,th,
+td {
+	margin: 0;
+	padding: 0;
+}
+
+body,button,input,select,textarea {
+	font-family: "微软雅黑", verdana, arial, helvetica, sans-serif;
+	/* font-size: 16px; */
+	line-height: 1.5;
+}
+
+h1 {
+	font-size: 18px;
+}
+
+h2 {
+	font-size: 16px;
+}
+
+h3 {
+	font-size: 14px;
+}
+
+h4,h5,h6 {
+	font-size: 100%;
+}
+
+ul,ol {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #c00;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+address,cite,dfn,em,var {
+	font-style: normal;
+}
+
+legend {
+	color: #000;
+}
+
+fieldset,img {
+	border: none;
+}
+
+button,input,select,textarea {
+	font-size: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+body{
+	background-color: #ffffff;
+}
+.show div {overflow:hidden;}

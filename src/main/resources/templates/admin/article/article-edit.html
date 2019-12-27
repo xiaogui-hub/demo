@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<HTML>
+<head>
+  <meta charset="utf-8">
+  <title>文章管理-修改</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/dist/css/AdminLTE.min.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/font-awesome/css/font-awesome.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/ztree/css/metroStyle/metroStyle.css}" media="screen" />
+  
+  <script type="text/javascript" th:src="@{/jquery/jquery-3.2.1.min.js}"></script>
+  <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap-table.min.js}"></script>
+  
+  <script type="text/javascript" th:src="@{/js/common.js}"></script>
+  <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+  
+  <script th:src="@{/ztree/jquery.ztree.all.min.js}"></script>
+  
+  <script th:src="@{/ueditor/ueditor.config.js}"></script>
+  <script th:src="@{/ueditor/ueditor.all.min.js}"></script>
+  <script th:src="@{/ueditor/lang/zh-cn/zh-cn.js}"></script>
+  
+</head>
+<body>
+	<div class="container" style="padding: 10px;">
+		<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+                <div class="card-body card-block">
+                      <form id="editForm" method="post" enctype="multipart/form-data" class="form-horizontal">
+                      		<input type="hidden" id="id" name="id" />
+							<div class="col-md-12">
+								 <div class="col col-md-3"><label for="title" class=" form-control-label">标题</label></div>
+				                 <div class="col-12 col-md-9"><input id="title" name="title"  placeholder="标题" class="form-control" autocomplete="off" ></div>
+							</div>
+							<div class="col-md-12">
+								 <div class="col col-md-3"><label for="columnId" class=" form-control-label">所属栏目</label></div>
+								 <div class="col-12 col-md-9">
+								 <input type="hidden" id="columnId" name="columnId" />
+								 <input type="text" id="columnTitle" name="columnTitle" required lay-verify="required" placeholder="所属栏目" autocomplete="off" class="form-control" onclick="showColumn();" readonly="readonly">
+								 <div id="columnContent" style="position: absolute; display: none; z-index: 9999; background: #d2d2d2; border: 1px solid #d2d2d2;">
+									<ul id="columnTree" class="ztree" style="margin-top: 0; width: 288px;"></ul>
+								 </div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								 <div class="col col-md-3"><label for="sort" class=" form-control-label">排序</label></div>
+				                 <div class="col-12 col-md-9"><input id="sort" name="sort"  placeholder="排序" class="form-control" autocomplete="off"></div>
+							</div>
+							<div class="col-md-12">
+								 <div class="col col-md-3"><label for="file-input" class=" form-control-label">内容</label></div>
+ 				                 <div class="col-12 col-md-9">
+ 				                 	<div id="editor" type="text/plain" style="width: 1024px;height: 500px;"></div>
+ 				                 </div>
+							</div>
+						</div>  
+						<div class="row">
+							<div class="col-md-12">
+				   				<button type="button" onclick="save()" class="btn btn-info">保存</button>
+				   				<button type="button" onclick="closeThis()" class="btn btn-danger">关闭</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</body>
+</HTML>
+<script type="text/javascript" th:inline="javascript">
+var articleId = [[${id}]];
+var zTreeObj;
+var setting = {
+		data:{
+			key:{
+				name:'name',
+				children:'childNode',
+			}
+		},
+		callback: {
+			onClick: zTreeOnClick
+		}
+};
+var editor = UE.getEditor('editor');
+$(document).ready(function(){
+	UE.Editor.prototype.getActionUrl = function(action) {
+	    if (action == 'uploadimage' || action == 'uploadscrawl' || action == 'uploadimage') {
+	        return '/ueditor/imgUpdate'; //在这里返回我们实际的上传图片地址
+	    } else {
+	        return this._bkGetActionUrl.call(this, action);
+	    }
+	 }
+	$.ax({
+		 url:'/admin/column/getColumnTreeList',
+		 data:{},
+		 success:function(res){
+			 zTreeObj = $.fn.zTree.init($("#columnTree"), setting, res.data);
+			 zTreeObj.expandAll(true);
+		 }
+	});
+	$.ax({
+		 url:'/admin/article/getDetailById?id='+articleId,
+		 data:{},
+		 success:function(res){
+			 if(res.code!=200){
+					layer.msg(res.msg);
+					return;
+				}
+			 $('#id').val(res.data.id);
+			 $('#title').val(res.data.title);
+			 $('#columnId').val(res.data.columnId);
+			 $('#columnTitle').val(res.data.columnTitle);
+			 $('#sort').val(res.data.sort);
+			 editor.ready(function(){
+				editor.setContent(res.data.content);
+			 })
+		 }
+	});
+});
+
+function save(){
+	var id = $('#id').val()
+	var title = $('#title').val()
+	if(title.length==0){
+		layer.msg('请输入标题')
+		return;
+	}
+	var columnId = $('#columnId').val()
+	if(columnId.length==0){
+		layer.msg('请选择栏目')
+		return;
+	}
+	var sort = $('#sort').val()
+	if(sort.length==0){
+		layer.msg('请输入排序')
+		return;
+	}
+	if(!UE.getEditor('editor').hasContents()){
+		layer.msg('请输入内容')
+		return;
+	}
+	var content = editor.getContent();
+	$.ax({
+		url:'/admin/article/update',
+		data:{'id':id,'title':title,'columnId':columnId,'sort':sort,'content':content},
+		success:function(res){
+			if(res.code!=200){
+				layer.msg(res.msg);
+				return;
+			}
+			 layer.msg('保存成功',{time:1000});
+			 parent.refresh();
+			 parent.layer.close(parent.layer.getFrameIndex(window.name));
+		}
+	});
+}
+
+function zTreeOnClick(event, treeId, treeNode) {
+	$("#columnId").val(treeNode.id);
+	$("#columnTitle").val(treeNode.name);
+	hideColumn();
+};
+
+function showColumn() {
+	var columnTitle = $("#columnTitle");
+	var cityOffset = $("#columnTitle").offset();
+	$("#columnContent").css({
+		left : columnTitle.left + "px",
+		top : columnTitle.top + columnTitle.outerHeight() + "px"
+	}).slideDown("fast");
+	$("body").bind("mousedown", onBodyDown);
+}
+
+function hideColumn() {
+	$("#columnContent").fadeOut("fast");
+	$("body").unbind("mousedown", onBodyDown);
+}
+
+function onBodyDown(event) {
+	if (!(event.target.id == "columnContent" || $(event.target).parents("#columnContent").length > 0)) {
+		hideColumn();
+	}
+}
+
+function closeThis(){
+	parent.layer.close(parent.layer.getFrameIndex(window.name));
+}
+</script>

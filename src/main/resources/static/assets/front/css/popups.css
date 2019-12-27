@@ -1,0 +1,62 @@
+           /*弹出窗口样式*/
+              .popups{
+				width: 507px;
+				height: 375px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+				border: 1px solid #b7d1ea;
+			}
+			.popups>p{
+                	font-size: 16px; 
+                	height: 58px;
+                	line-height: 49px;
+                	font-weight: bold;
+                	color: #044676;
+                	text-align: center;
+                	background: url(../img/line.png) no-repeat 130px 44px;
+                }
+                ul{
+                	padding: 10px 30px;
+                	border-bottom: 1px solid #b7d1ea;
+                }
+                li{
+                	height: 55px;
+                	letter-spacing: 3px;
+                }
+                li input{
+                	height: 28px;
+                	border: 1px solid #9c9c9c;
+                	padding-left:5px
+                }
+                #software{
+                	width: 321px;
+                }
+                input[type=file]{
+                	display: none;
+                }
+                label{
+                	display: inline-block;
+                	width: 84px;
+                	height: 30px;
+                	text-align: center;
+                	line-height: 30px;
+                	letter-spacing: normal;
+                	border: 1px solid #044676;
+                	border-radius: calc(3px);
+                }
+                p input{
+                	width: 49px;
+                	height: 25px;
+                	border: 1px solid #044676;
+                	border-radius: calc(3px);
+                	background-color: #fff;
+                	margin-left: 14px;
+                	margin-top: 20px;
+                }
+                input[name=add]{
+                	color: #fff;
+                	margin-left: 32px;
+                	border: 0;
+                	background: url(../img/btn-img.png) no-repeat;
+                	background-size: 100% 100%;
+                }

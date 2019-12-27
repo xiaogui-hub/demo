@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>详情</title>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/reset.css}" href="../../static/assets/front/css/reset.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/style.css}" href="../../static/assets/front/css/style.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/animate.css}" href="../../static/assets/front/css/animate.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/swiper.min.css}" href="../../static/assets/front/css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/update-index.css}" href="../../static/assets/front/css/update-index.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/upstyle.css}" href="../../static/assets/front/css/upstyle.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{assets/front/css/lunbo.css}" href="../../static/assets/front/css/lunbo.css">
+<script th:src="@{/assets/js/jquery-1.9.1.min.js}" src="../../static/assets/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/js/bootstrap.min.js}" src="../../static/assets/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/front/js/index.js}" src="../../static/assets/front/js/index.js" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/front/js/resize.js}" src="../../static/assets/front/js/resize.js" type="text/javascript"charset="utf-8"></script>
+<script th:src="@{/assets/front/js/swiper.min.js}" src="../../static/assets/front/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/front/js/wow.min.js}" src="../../static/assets/front/js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/front/js/layer.js}"  src="../../static/assets/front/js/layer.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="container" class="abstract-wrap meeting-wrap">
+		<!--顶部的logo-->
+		<div class="top-logo">
+			<img th:src="@{/assets/front/img/top-logo.png}" src="../../static/assets/front/img/top-logo.png"  alt="logo" title="logo" />
+		</div>
+		<!--顶部导航栏-->
+		<div class="top-nav">
+			<div class="nev">
+				<!--导航栏-->
+				<ul class="nev-ul">
+					<li ><a th:href="@{/front/index}" href="index.html">门户首页</a></li>
+					
+					<li><a th:href="@{/front/articleMore?columnId=19}" href="article-more.html">最新动态</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=31}" href="article-more.html">财务报告</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=32}" href="article-column.html">企业文化</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=46}" href="article-column.html">员工生活</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=44}" href="article-more.html">专利信息</a></li>
+					
+					<li class="ahover2"><a th:href="@{/front/companyProfile}" href="company-profile.html">公司简介</a></li>
+				</ul>
+			</div>
+			<div class="nev-menu-item"></div>
+		</div>
+	    <div class="register">
+	        <div class="fl place">
+	        	<!--当前位置-->
+	        	<img th:src="@{/assets/front/img/icon-weizhi.png}">
+	        	当前位置：<a th:href="@{/front/index}"><font color="blue">首页</font></a>&gt;<a th:href="@{/front/companyProfile}"><font color="blue">公司动态</font></a>
+	        </div>
+	    </div>
+		<div class="main">
+			<div><p>中仕学社培训学校创立于2002年，是由秦皇岛市教育局审批，民政局备案的一所综合性培训学校。办学15年来先后荣获“市教育局先进办学单位”、“河北知名院校”“全国优秀培训学校”、“河北服务外包培训定点单位”、“河北中小企业公共服务平台”、“秦皇岛市创业服务培训定点单位”、“秦皇岛民营经济人才培训基地”等荣誉称号，培训各类学员数万人，长期合作培训企业百余家，拥有专兼职教师百余人。</p><br><p>十多年来中仕学社为社会各界培训人才数万名，签约合作与培训企业数百家。形成了完善的培训管理体系、良好的学员口碑和普遍的社会认可。多次被评为省、市级先进教学单位，获得全国十佳教育培训学校荣誉，成为中国商业联合会指定培训中心、中国物流与采购联合会指定培训中心、省商务厅指定服务外包人才培训机构、河北省服务贸易协会理事单位、河北建材职教集团理事单位等。</p><br><p>中仕学社培训学校学校始终秉承“谦诚、笃学”的校训，坚持“以职业能力为核心、以市场为导向”的培训理念，以“对学员负责，让企业满意”为标准严格要求自己，不断提高培训质量和服务水平，为客户提供更高品质的培训课程，为企事业单位源源不断的输送优秀人才与先进理念，立足河北，服务河北！为本省的经济建设和企业繁荣和发展贡献自己的力量。</p><br><p>曾服务过的政府单位有秦皇市工业和信息化局、秦皇岛人力资源和社会保障局、秦皇岛商务局、秦皇岛市委组织部、燕山大学等；企业有秦皇岛供电公司、秦皇岛中石油燃油沥青有限责任公司、秦皇岛光彩科技发展有限公司、秦皇岛康泰医学系统有限公司、秦皇岛燕山大学科技园发展有限公司、秦皇岛方华埃西姆机械有限公司等。</p><br><p>曾服务过秦皇岛燕山大学、东大秦分校、河北科技师范学院等高校大学生及社会人员数十类职业工种参训取证人员数万人，并顺利考取职业资格证上岗就业，深受当地的一致认可和信赖。</p></div>
+		</div>
+		<div class="footer">
+			 	<p>建议使用IE11及以上版本&nbsp;&nbsp;地址：秦皇岛市海港区迎宾路 邮编066000&nbsp;&nbsp;&nbsp;&nbsp;建议采用1024*768来浏览</p>
+			</div>
+</div>
+</body>
+</html>

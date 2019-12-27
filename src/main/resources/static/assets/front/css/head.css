@@ -1,0 +1,87 @@
+/*头部样式*/
+body{
+				color: #333333;
+				font-size: 14px;
+				font-family: "微软雅黑";
+			}
+			a{color: #333333;}
+			a:link{color: #333333;}
+			a:visited{color: #333333;}
+			a:hover{color: #800080;}
+			a:active{color: #F6930D;}
+			.fl{
+				float: left;
+			}
+			.fr{
+				float: right;
+			}
+			#container{
+	              width: 1200px;
+	              margin: 0px auto;
+                }
+            .header{
+            	height:453px;
+            }
+             /*导航栏样式*/
+            .nev{
+	                height: 51px;
+	                width: 1200px;
+	                background-color: #d7261e;
+                }    
+             .nev li{
+	                 width: 171px;
+	                 line-height: 51px;
+	                 text-align:center;
+	                 font-size: 22px;
+                   }
+             .nev li a{
+	                  color: #ffffff;
+	                  display: block;
+                    }
+            .nev li a:hover{
+	                       font-size: 23px;
+                         }
+                .nev span{
+	                  color: #c7c5c5;
+                     }
+           .flex {
+                  display: -webkit-box;
+                  display: -moz-box;
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flexbox;
+                  display: flex;
+          -webkit-display: flex;
+          }
+       .flex{
+				justify-content: space-between;
+                align-items: center;
+			}
+			/*下拉菜单样式*/
+			.nev-menu li{
+			         	height: 40px;
+			         	line-height: 40px;
+			         }
+			 	  .nev-menu a{
+			 	  	    height: 40px;
+			 	  	    color: #ffffff;
+			 	  	     background-color: #455d77;
+               	       font-size: 16px;
+               	       position: relative;
+                    }
+                    .nev-menu li a:hover{
+                    	font-size: 17px;
+                    }
+			/*顶部图片轮播*/
+			.pic1{
+	               width: 1200;
+	               height: 353px;
+	               overflow: hidden;
+                }
+                /*登录行的样式*/
+               .register{
+	                     height: 58px;
+	                     line-height: 58px;
+	                     background-color: #fafafa;
+	                     padding-right: 20px;
+                        }

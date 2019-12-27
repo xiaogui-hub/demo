@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<HTML>
+<head>
+  <meta charset="utf-8">
+  <title>栏目管理</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/dist/css/AdminLTE.min.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/font-awesome/css/font-awesome.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/ztree/css/metroStyle/metroStyle.css}" media="screen" />
+  <script th:src="@{/jquery/jquery-3.2.1.min.js}"></script>
+  <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/js/common.js}"></script>
+  <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+  <script th:src="@{/ztree/jquery.ztree.all.min.js}"></script>
+</head>
+<body>
+	<div class="container" style="padding: 10px;">
+	   <div class="row">
+	      <div class="col-md-4" style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;height: 600px;">
+	  		   <ul id="columnTree" class="ztree"></ul>  
+	      </div>
+	      <div class="col-md-7" style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;padding: 10px;height: 600px;margin-left: 2px;">
+	      	   <form role="form">
+	      	   		<input type="hidden" id="id" name="id">
+	      	   		<input type="hidden" id="pid" name="pid">
+	      	   		<div class="form-group">
+						<label>栏目编码</label>
+						<input type="text" class="form-control" id="code" name="code" placeholder="请输入栏目编码">
+					</div>
+					<div class="form-group">
+						<label>栏目名称</label>
+						<input type="text" class="form-control" id="name" name="name" placeholder="请输入栏目名称">
+					</div>
+					<div class="form-group">
+						<label>上级</label>
+						<input type="text" class="form-control" id="parentName" name="parentName" readonly="readonly" placeholder="">
+					</div>
+					<div class="form-group">
+						<label>类型</label>
+						   <select class="form-control" id="type" name="type">
+						      <option value="1">头部</option>
+						      <option value="2" selected="selected">中间</option>
+						      <option value="3">底部</option>
+						    </select>
+					</div>
+					<div class="form-group">
+						<label>排序</label>
+						<input type="text" class="form-control" id="sort" name="sort" placeholder="请输入排序">
+					</div>
+					<div class="form-group">
+						<label>栏目样式</label>
+						<input type="text" class="form-control" id="style" name="name" placeholder="请输入栏目样式">
+					</div>
+					<button type="button" id="addBtn" class="btn btn-default">增加下级</button>
+					<button type="button" id="saveBtn" class="btn btn-default">保存</button>
+					<button type="button" id="delBtn" class="btn btn-default">删除</button>
+				</form>
+	      </div>
+	   </div>
+	</div>
+</body>
+</HTML>
+<script type="text/javascript">
+	var zTreeObj;
+	var setting = {
+			data:{
+				key:{
+					name:'name',
+					children:'childNode',
+				}
+			},
+			callback: {
+				onClick: zTreeOnClick
+			}
+	};
+	$(document).ready(function(){
+		$.ax({
+			 url:'/admin/column/getColumnTreeList',
+			 data:{},
+			 success:function(res){
+				 zTreeObj = $.fn.zTree.init($("#columnTree"), setting, res.data);
+				 zTreeObj.expandAll(true);
+				 var node = zTreeObj.getNodeByParam("pid", 0, null);
+				 zTreeObj.selectNode(node);//选择点
+                 zTreeObj.setting.callback.onClick(null, zTreeObj.setting.treeId, node);//调用事件
+
+			 }
+		});
+		
+		$("#saveBtn").click(function(){
+			 var id = $("#id").val();
+		 	 var code = $("#code").val();
+		 	 var name = $("#name").val();
+		 	 var sort = $("#sort").val();
+		 	 var type = $("#type").val();
+		 	 var style = $("#style").val();
+	 		 var pid = $("#pid").val();
+			
+			$.ax({
+				 url:'/admin/column/saveColumn',
+				 data:{'id':id,'code':code,'name':name,'sort':sort,'type':type,'style':style,'pid':pid},
+				 success:function(res){
+					if(res.code!=200){
+						layer.msg(res.msg);
+						return;
+					}
+					 layer.msg('保存成功',{time:1000});
+					 
+// 					 zTreeObj.refresh();
+					 
+					 var nodes = zTreeObj.getSelectedNodes();
+					 var selectNode = null;
+					 if(nodes!=null&&nodes.length>0){
+						 selectNode = nodes[0];
+					 }else{
+						 return;
+					 }
+					 if(id==null||id==''){
+						 var newNode = {'id':res.data,'code':code,'name':name,'sort':sort,'type':type,'style':style,'pid':pid};
+						 newNode = zTreeObj.addNodes(selectNode, newNode);
+						 setTimeout(function(){
+							 zTreeObj.setting.callback.onClick(null, zTreeObj.setting.treeId, selectNode);//调用事件
+						 },500);
+					 }else{
+						 selectNode.code=code;
+						 selectNode.name=name;
+						 selectNode.sort=sort;
+						 selectNode.type=type;
+						 selectNode.style=style;
+						 selectNode.pid=pid;
+						 zTreeObj.updateNode(selectNode);
+					 }
+				 }
+			});
+		});
+		$("#addBtn").click(function(){
+			 var nodes = zTreeObj.getSelectedNodes();
+			 if(nodes==null || nodes.length==0){
+				 return;
+			 }
+			 $("#id").val('');
+		 	 $("#code").val('');
+		 	 $("#name").val('');
+		 	 $("#sort").val('');
+		 	 $("#type").val('');
+		 	 $("#style").val('');
+	 		 $("#parentName").val(nodes[0].name);
+	 		 $("#pid").val(nodes[0].id);
+		});
+		
+		$("#delBtn").click(function(){
+			 var nodes = zTreeObj.getSelectedNodes();
+			 if(nodes==null||nodes.length==0){
+				 return;
+			 }
+			 if(id.length==0){
+				 layer.msg('请选择数据');
+				 return;
+			 }
+			 $("#id").val('');
+		 	 $("#code").val('');
+		 	 $("#name").val('');
+		 	 $("#sort").val('');
+		 	 $("#type").val('');
+		 	 $("#style").val('');
+		 	 $("#parentName").val('');
+	 		 $("#pid").val('');
+	 		 $.ax({
+				 url:'/admin/column/delColumn',
+				 data:{'columnId':nodes[0].id},
+				 success:function(res){
+					 if(res.code!=200){
+						layer.msg(res.msg)
+						return;
+					 }
+					 layer.msg('删除成功',{time:1000});
+					 zTreeObj.removeNode(nodes[0]);
+				 }
+			});
+		});
+	});
+	function zTreeOnClick(event, treeId, treeNode) {
+		$("#id").val(treeNode.id);
+	 	$("#code").val(treeNode.code);
+	 	$("#name").val(treeNode.name);
+	 	$("#sort").val(treeNode.sort);
+	 	$("#type").val(treeNode.type);
+	 	$("#style").val(treeNode.style);
+	 	$("#pid").val('');
+	 	var parentNode = treeNode.getParentNode();
+	 	if(parentNode!=null){
+	 		$("#parentName").val(parentNode.name);
+	 	}
+	};
+</script>

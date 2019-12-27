@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>菜单</title>
+<link rel="stylesheet" type="text/css"  th:href="@{/ztree/css/metroStyle/metroStyle.css}" media="screen" />
+<script th:src="@{/jquery/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/ztree/jquery.ztree.all.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+</head>
+<body>
+<div>
+  <ul id="menuTree" class="ztree"></ul>
+</div>
+</body>
+<script type="text/javascript">
+	var zTreeObj;
+	var setting = {
+			data:{
+				key:{
+					name:'name',
+					children:'childNode',
+					target:'main'
+				}
+			},
+			callback: {
+			}
+   };
+	$(document).ready(function(){
+		$.ax({
+			 url:'/admin/getMenuByUserId',
+			 data:{},
+			 success:function(res){
+				 zTreeObj = $.fn.zTree.init($("#menuTree"), setting, res.data);
+				 zTreeObj.expandAll(true);
+			 }
+		});
+	});
+</script>
+</html>

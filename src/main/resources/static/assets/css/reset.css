@@ -1,0 +1,122 @@
+/*手机端CSS初始化*/
+ body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,table,th,tr,td,dl,dd,div,form,input,textarea,button,strong,em,select,video,canvas {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+    }
+    li {
+        list-style: none;
+    }
+    
+    table {
+           border-collapse: collapse;
+    }
+    textarea {
+              resize: none;
+              outline: none;
+              -webkit-outline: none;
+              overflow: auto;
+     }
+     img {
+            border: none;
+     }
+    
+     em {
+         font-style: normal;
+     }
+    
+      a {
+            color: #999;
+            text-decoration: none;
+      }
+      a,input {
+        /*-webkit-appearance: none;*/
+        /*屏蔽阴影*/
+        outline: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        /*ios android去除自带阴影的样式*/
+    }
+    
+    input[type=text],input[type=password] {
+        outline: none;
+        -webkit-outline: none;
+        -webkit-appearance: none;
+    }
+    
+    select {
+        outline: none;
+        -webkit-outline: none;
+    }
+    
+    input[type=submit] {
+        -webkit-appearance: none;
+    }
+    
+    a,
+    img {
+        /* 禁止长按链接与图片弹出菜单 */
+        -webkit-touch-callout: none;
+    }
+    
+    html,body {
+        /* 禁止选中文本(如无文本选中需求,此为必选项) */
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    /*public*/
+    
+    body {
+        font-family: "Helvetica Neue", Helvetica, "STHeiTi", "sans-serif";
+        font-size: 0.32rem;
+        color: #999;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    
+    .fl {
+        float: left;
+    }
+    
+    .fr {
+        float: right;
+    }
+    
+    input::-webkit-input-placeholder {
+        /*Chrome/Safari*/
+        color: #c7c7cc;
+    }
+    
+    input::-moz-placeholder {
+        /*Firefox*/
+        color: #c7c7cc;
+    }
+    
+    input::-ms-input-placeholder {
+        /*IE*/
+        color: #c7c7cc;
+    }
+    
+    .clear {
+        zoom: 1;
+    }
+    
+    .clear:after {
+        display: block;
+        height: 0;
+        content: '';
+        clear: both;
+        overflow: hidden;
+        visibility: hidden;
+        zoom: 1;
+    }
+    
+    .flex {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-display: flex;
+        //border: 1px solid bisque;
+    }

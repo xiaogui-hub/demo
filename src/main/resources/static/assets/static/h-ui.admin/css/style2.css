@@ -1,0 +1,208 @@
+@charset "utf-8";
+/* 你自己的样式 */
+
+.dataTables_wrapper .dataTables_length{
+    display: none;
+}
+
+.dataTables_filter{
+    display: none;
+}
+
+
+.Hui-iconfont {
+    -webkit-text-stroke-width: 0.0px;
+}
+.label-k{
+    padding: 0px 5px 0px 15px;
+}
+
+.padding-no-l{
+    padding-left: 0px;
+}
+
+.padding-no-r{
+    padding-right: 0px;
+}
+
+
+a.none-dec:hover{
+    text-decoration: none;
+}
+.navbar-wrapper{
+    height: 80px;
+    line-height: 80px;
+}
+
+.Hui-aside {
+    top: 80px;
+}
+.Hui-article-box{
+    top: 80px;
+}
+.navbar .navbar-logo img{
+    width: auto;
+    height: 40px;
+    display: inline-block;
+}
+.navbar .navbar-logo{
+    height: 80px;
+    line-height: 80px;
+}
+
+.navbar{
+    background: #ffffff;
+}
+.user-text{
+    display: inline-block;
+}
+.user-text p{
+    line-height: 18px;
+}
+
+.user-top-text{
+    font-size: 16px;
+    color: #353535;
+    margin-bottom: 4px;
+}
+.user-bottom-text{
+    font-size: 12px;
+    color: #9A9a9a;
+}
+
+.navbar-nav>ul>li>a.user-text-a{
+    line-height: 18px;
+}
+
+a.user-text-a i{
+    color: #9A9a9a;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 3px;
+}
+
+#Hui-userbar {
+    top: 20px;
+}
+
+
+.dropDown.open>.dropDown-menu{
+    left: -26px;
+}
+
+.user-msg{
+    margin-left: 5px;
+}
+
+
+
+
+
+#Hui-userbar:hover{
+    background-color: #ffffff;
+}
+
+.login-header{
+    position: relative;
+    top: 0;
+    height: 82px;
+    background: #E6E6E6;
+    width: 100%;
+    z-index: 9;
+}
+
+
+.loginBox {
+    position: absolute;
+    width: 480px;
+    height: 390px;
+    background: rgba(255,255,255,.3);
+    left: 50%;
+    top: 50%;
+    margin-left: -240px;
+    margin-top: -195px;
+    border-radius: 6px;
+}
+.login-head{
+    font-size: 24px ;
+    color: #ffffff;
+    text-align: center;
+    border-bottom: 1px solid #BDBDC1;
+    width: 100%;
+    height: 96px;
+    line-height: 96px;
+}
+.login-label i{
+    font-size: 24px;
+}
+.login-label{
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    line-height: 48px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #AAABAB;
+}
+
+
+.login-input{
+    display: inline-block;
+    height: 48px;
+    line-height: 48px;
+    vertical-align: top;
+}
+
+.loginWraper .input-text.size-L, .btn.size-L {
+    font-size: 20px;
+    height: 48px;
+    line-height: 48px;
+    padding: 8px;
+    color: #484444;
+}
+.loginWraper .input-text.size-L:hover{
+    border: 0px;
+}
+.loginWraper .input-text.size-L:focus{
+    border: 0px;
+}
+.loginWraper .form-horizontal .form-label {
+    margin-top: 0px;
+    cursor: text;
+    text-align: center;
+}
+
+.loginWraper .formControls {
+    position: relative;
+    left: -4px;
+    top: -2px;
+}
+
+.loginWraper .cl{
+    margin-top: 20px;
+    margin-left: 60px;
+}
+
+.btn-login{
+    width: 360px;
+    height: 44px;
+    line-height: 44px;
+    color: #ffffff;
+    background-color: rgb(213, 78, 33);;
+    font-size: 20px;
+    text-align: center;
+    border: 0px;
+    letter-spacing: 15px;
+}
+
+.logo-wrap{
+    width: 1200px;
+    height: 80px;
+    line-height: 80px;
+    margin: 0 auto;
+}
+input[type="checkbox"].mt-xs-0{
+	margin-top:0
+}
+

@@ -1,0 +1,126 @@
+/*主体内容样式表*/
+           .con-act{
+				font-size: 0.14rem;
+				height: 0.38rem;
+				/* line-height: 0.38rem; */
+				padding-left: 0.2rem;
+				/* margin-left: 0.12rem; */
+				background-color: #0464af;
+			}
+			 .con-info{
+				    color: #044676;
+                	//width: 11.38rem;
+                	height: 9.04rem;
+                	font-size: 0.14rem;
+                	margin: 0.05rem;
+                	/* border: 1px solid #4c92db; */
+                	background-color: #fff;
+                }
+                /*搜索框样式*/
+                .search{
+                	/* height: 0.79rem; */
+                	/* background-color: #eff7fd;
+                	border-bottom: 1px solid #c9d7e5; */
+                }
+                .search ul{
+                	height: 0.5rem;
+                	line-height: 0.5rem;
+                	padding-left: 0.23rem;
+                }
+                .search li{
+                	float: left;
+                	margin-left: 0.18rem;
+                }
+                .search select{
+                	width: ;
+                }
+               .search input,select{
+                	height: 0.24rem;
+                	border: 1px solid #818181;
+                }
+               .search input[type=image]{
+                	width: 0.23rem;
+                	height: 0.23rem;
+                	border:0;
+                	position: relative;
+                	top: 0.08rem;
+                }
+                .search span{
+                	position: relative;
+                	left: 0.5rem;
+                	top: 0.07rem;
+                }
+                /*表格样式*/
+                .red{
+                	color: #fe2626;
+                }
+                table{
+                	/*width: 11.19rem;*/
+                	width: 100%;
+                	border: 1px solid #c6dbef;
+                	margin: 0.15rem auto;
+                	margin-bottom: 0px;
+                }
+                th{
+                	height: 0.4rem;
+                	border: 1px solid #c6dbef;
+                }
+                td{
+                	height: 0.36rem;
+                	text-align: center;
+                }
+                .sort img{
+                	width: 0.1rem;
+                	height: 0.23rem;
+                }
+                .img-hide{
+                	display: none;
+                }
+                .operation img{
+                	width: 0.26rem;
+                	height: 0.26rem;
+                	margin-left: 0.08rem;
+                }
+                .addcol{
+                	width: 0.3rem;
+                }
+                /*分页区块样式*/
+                .page{
+                	//width: 11.05rem;
+                	height: 0.39rem;
+                	line-height: 0.39rem;
+                	padding-left: 0.14rem;
+                	margin: 0px auto;
+                	background: url(../img/page.png) no-repeat;
+                	background-size: 100% 100%;
+                }
+                input[type=file]{
+                	display: none;
+                }
+                /*按钮样式分为蓝色按钮，红色按钮，白色按钮*/
+                  .btn-blue,.btn-red,.btn-red1,.btn-white{
+                 	color: #fff;
+                	height: 0.25rem;
+                	line-height: 0.25rem;
+                	padding: 0 0.12rem;
+                	margin-left: 0.1rem;
+                	border-radius: calc(4px);
+                }
+                .btn-blue{
+                	background: url(../img/btn-img.png) no-repeat;
+                	background-size: 100% 100%;
+                }
+                .btn-red1{
+                    background: url(../img/del.png) no-repeat;
+                	background-size: 100% 100%;
+                }
+                .btn-red{
+                	background: url(../img/more-del.png) no-repeat;
+                	background-size: 100% 100%;
+                }
+               .btn-white{
+                	color: #333;
+                	background-color: #fff;
+                	border: 1px solid #333;
+                	border-radius: calc(4px);
+                }

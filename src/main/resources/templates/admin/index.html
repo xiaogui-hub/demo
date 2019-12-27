@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>门户后台</title>
+</head>
+<frameset rows="80,*">
+	 <frame th:src="@{/admin/header}" noresize="noresize"/>
+	 <frameset  cols="200,*">
+		 <frame th:src="@{/admin/left}"/>
+ 		 <frame name="main" th:src="@{/admin/main}"/>
+	 </frameset>
+</frameset>
+</html>

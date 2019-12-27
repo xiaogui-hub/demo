@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<HTML>
+<head>
+  <meta charset="utf-8">
+  <title>图片管理-添加</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/dist/css/AdminLTE.min.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/font-awesome/css/font-awesome.min.css}" />
+  
+  <script type="text/javascript" th:src="@{/jquery/jquery-3.2.1.min.js}"></script>
+  <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap-table.min.js}"></script>
+  
+  <script type="text/javascript" th:src="@{/js/common.js}"></script>
+  <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+  
+   <!-- ajaxFileUpload -->
+  <script th:src="@{/js/jquery.browser.min.js}" type="text/javascript"></script>
+  <script th:src="@{/js/jquery.ajaxFileUpload.js}" type="text/javascript"></script>
+  <style type="text/css">
+  	/**文件上传样式**/
+  	.a-upload-img {position: relative;padding: 0px;margin: 0px;display: block;width: 100%;height: 120px;cursor: Default;}
+	.a-upload-img img {border: 1px solid #eee;width: 100%;height: 100%;}
+	.a-upload {padding: 0px;height: 30px;position: relative;line-height: 30px;cursor: pointer;color: #888;background: #fafafa;border: 1px solid #ddd;overflow: hidden;display: inline-block;*zoom: 1;width: 100%;height: 30px;text-align: center;}
+	.a-upload  input {position: absolute;font-size: 100px;right: 0;top: 0;opacity: 0;filter: alpha(opacity = 0);cursor: pointer;width: 100%;height: 100%;}
+	.a-upload:hover {color: #444;background: #eee;border-color: #ccc;text-decoration: none;cursor: pointer;}
+  </style>
+</head>
+<body>
+	<div class="container" style="padding: 10px;">
+		<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+                <div class="card-body card-block">
+                      <form id="editForm" method="post" enctype="multipart/form-data" class="form-horizontal">
+							<div class="col-md-12">
+								 <div class="col col-md-3"><label for="title" class=" form-control-label">标题</label></div>
+				                 <div class="col-12 col-md-9"><input id="title" name="title"  placeholder="标题" class="form-control" autocomplete="off"></div>
+							</div>
+							<div class="col-md-12">
+								 <div class="col col-md-3"><label for="type" class=" form-control-label">类型</label></div>
+								 <div class="col-12 col-md-9">
+										 <select name="type" id="type" class="form-control">
+				                                  	<option value="1">头部</option>
+				                                  	<option value="2">中间左侧</option>
+				                                  	<option value="3">底部</option>
+				                                  	<option value="-1">其他</option>
+					                      </select>
+								 </div>
+							</div>
+							<div class="col-md-12">
+								 <div class="col col-md-3"><label for="file-input" class=" form-control-label">商品图片</label></div>
+	                             <div class="col-12 col-md-5">
+	                             	<a href="javascript:void(0);" class="a-upload-img">
+					                  	<img src="/image/img_default.png" id="showfile1"/>
+				                  	</a>
+				                  	<a href="javascript:void(0);" class="a-upload">
+				                  		<input type="hidden" value="" name="url" id="showfile1value"/>
+				                  		<input type="file" name="file" id="file1" showid="showfile1">
+				                  		<span>点击这里上传照片</span>
+				                  	</a>
+	                             </div>
+							</div>
+							<div class="col-md-12">
+								 <div class="col col-md-3"><label for="href" class=" form-control-label">跳转地址</label></div>
+				                 <div class="col-12 col-md-9"><input id="href" name="href"  placeholder="跳转地址" class="form-control" autocomplete="off"></div>
+							</div>
+							<div class="col-md-12">
+								 <div class="col col-md-3"><label for="sort" class=" form-control-label">排序</label></div>
+				                 <div class="col-12 col-md-9"><input id="sort" name="sort"  placeholder="排序" class="form-control" autocomplete="off"></div>
+							</div>
+						</div>  
+						<div class="row">
+							<div class="col-md-12">
+				   				<button type="button" onclick="save()" class="btn btn-info">保存</button>
+				   				<button type="button" onclick="closeThis()" class="btn btn-danger">关闭</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</body>
+</HTML>
+<script type="text/javascript">
+$(document).ready(function(){
+	//绑定照片change事件
+	bindImgChange();
+});
+
+function save(){
+	$.ax({
+		url:'/admin/image/save',
+		data:$("form").serialize(),
+		success:function(res){
+			if(res.code!=200){
+				layer.msg(res.msg);
+				return;
+			}
+			 layer.msg('保存成功',{time:1000});
+			 parent.refresh();
+			 parent.layer.close(parent.layer.getFrameIndex(window.name));
+		}
+	});
+}
+
+function closeThis(){
+	parent.layer.close(parent.layer.getFrameIndex(window.name));
+}
+function bindImgChange(){
+	$(".a-upload").on("change","input[type='file']",function(){
+		var that = $(this);
+	    var filePath = that.val();
+	    var fileShow = that.attr("showid");
+	    //格式校验
+	    var fmtResult = false,fmts=['jpg','jpeg','png','gif'];
+	    var fileFmt = filePath.substring(filePath.lastIndexOf('.')+1,filePath.length);
+	    for (var i=0;i<fmts.length;i++) {
+	    	if(fileFmt.toLowerCase() == fmts[i].toLowerCase()){
+	    		fmtResult = true;
+	    		break;
+	    	}
+	    }
+	    if(fmtResult){
+	        var arr = filePath.split('\\');
+	        var fileName = arr[arr.length-1];
+	    	that.next('span').html(fileName);
+	    	
+	    	//上传
+			$.ajaxFileUpload({
+				url : '/admin/image/upload',
+				secureuri : false,
+				fileElementId : that.attr("id"),
+				dataType : 'json',
+				isAsyncResponse : false, // 使用异步响应结果
+				success : function(data, status) {
+					//show progress
+					if(data.code == 200){
+						$('#'+fileShow).attr('src',data.data);
+						$('#'+fileShow+"value").val(data.data);
+					}else{
+						alert(data.msg);
+					}
+				},
+				complete : function(data, status) {
+					layer.msg('上传完成');
+				}
+			});
+	    }else{
+	    	that.next('span').html('点击这里上传照片');
+	    	layer.msg("您未上传文件，或者您上传文件类型有误！");
+	        return false;
+	    }
+	})
+}
+</script>

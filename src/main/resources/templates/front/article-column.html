@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>栏目文章</title>
+<script th:src="@{/assets/front/js/jquery-1.8.3.js}" type="text/javascript" charset="utf-8" src="../../static/assets/front/js/jquery-1.8.3.js"></script>
+<script th:src="@{/assets/front/js/index.js}" type="text/javascript" charset="utf-8" src="../../static/assets/front/js/index.js"></script>
+<script th:src="@{/assets/front/js/resize.js}" type="text/javascript" charset="utf-8" src="../../static/assets/front/js/resize.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/reset.css}" href="../../static/assets/front/css/reset.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/style.css}" href="../../static/assets/front/css/style.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/update-index.css}" href="../../static/assets/front/css/update-index.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/upstyle.css}" href="../../static/assets/front/css/upstyle.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/pub.css}" href="../../static/assets/front/css/pub.css"/>
+<style type="text/css">
+	.text-hide{
+		max-width: 110px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.over-link-wrap{
+	     float:none;
+	}
+	</style>
+</head>
+<body>
+<div id="container" class="abstract-wrap finance-wrap">
+		<!--顶部的logo-->
+		<div class="top-logo">
+			<img th:src="@{/assets/front/img/top-logo.png}" src="../../static/assets/front/img/top-logo.png" alt="logo" title="logo" />
+		</div>
+		<!--顶部导航栏-->
+		<div class="top-nav">
+			<div class="nev">
+				<!--导航栏-->
+				<ul class="nev-ul">
+					<li ><a th:href="@{/front/index}" href="index.html">门户首页</a></li>
+					
+					<li th:class="${column.id==19?'ahover2':_}"><a th:href="@{/front/articleMore?columnId=19}" href="article-more.html">最新动态</a></li>
+					<li th:class="${column.id==31?'ahover2':_}"><a th:href="@{/front/articleMore?columnId=31}" href="article-more.html">财务报告</a></li>
+					<li th:class="${column.id==32?'ahover2':_}"><a th:href="@{/front/articleMore?columnId=32}" href="article-column.html">企业文化</a></li>
+					<li th:class="${column.id==46?'ahover2':_}"><a th:href="@{/front/articleMore?columnId=46}" href="article-column.html">员工生活</a></li>
+					<li th:class="${column.id==44?'ahover2':_}"><a th:href="@{/front/articleMore?columnId=44}" href="article-more.html">专利信息</a></li>
+					
+					<li><a th:href="@{/front/companyProfile}" href="company-profile.html">公司简介</a></li>
+				</ul>
+			</div>
+			<div class="nev-menu-item"></div>
+		</div>
+		<div class="register">
+				<div class="fl place">
+					<!--当前位置-->
+					<img th:src="@{/assets/front/img/icon-weizhi.png}">
+					当前位置：<a th:href="@{/front/index}"><font color="blue">首页</font></a>
+					&gt;<a th:href="@{'/front/articleMore?columnId='+${column.id}}"><font color="blue" th:text="${column.name}"></font></a>
+				</div>
+		</div>
+		<div class="main">
+			<!--左边部分菜单列表-->
+			<div class="left-side fl">
+				<div class="left-menu countSum">
+					<p th:text="${column.name}">企业文化</p>
+					<ul>
+						<li style="padding-left: 40px;" th:each="childenColumn ,var : ${column.childNode}">
+							<a th:href="@{'#mo'+${var.index}}"><img style="top: 3px; margin-right: 8px;" th:src="@{/assets/front/img/icon-2.png}"><span th:text="${childenColumn.name}"></span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--左边部分菜单列表结束-->
+			<!--右边详细内容-->
+			<div class="right-side fl">
+					<div class="bm" th:each="childenColumn ,var : ${column.childNode}">
+						<div class="head">
+							<p class="fl">
+								<img th:src="@{/assets/front/img/icon-2.png}" align="absmiddle" th:text="${childenColumn.name}"></p>
+							<a th:href="@{'/front/articleMore?columnId='+${childenColumn.id}}" class="more fr" th:attr="name=@{'mo'+${var.index}}">更多&gt;&gt;</a>
+						</div>
+						<div class="detail countSum">
+							<ul>
+								<li th:each="article ,var2 : ${childenColumn.articleList}">
+									<a th:href="@{'/front/articleDetailById?articleId='+${article.id}}">
+								  		 <span class="over-link-wrap" th:text="${article.title}"></span><span class="day" th:text="${#dates.format(article.releasTime,'yyyy-MM-dd')}"></span>
+								   </a>
+								</li>
+							</ul>
+						</div>
+					</div>
+			</div>
+			<!--右边详细内容结束-->
+		</div>
+		<div class="footer">
+			<p>建议使用IE11及以上版本&nbsp;&nbsp;地址：秦皇岛市海港区迎宾路155号邮编066000&nbsp;&nbsp;&nbsp;&nbsp;建议采用1024*768来浏览</p>
+		</div>
+</body>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".left-menu li").each(function(index) {
+			$(".left-side li").click(function() {
+				$(".left-menu li span").removeClass("red2");
+				$(this).find("span").addClass("red2");
+			});
+		});
+	});
+</script>
+</html>

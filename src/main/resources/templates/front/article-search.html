@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>栏目文章</title>
+<script th:src="@{/assets/front/js/jquery-1.8.3.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/front/js/index.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/front/js/resize.js}" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/reset.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/style.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/update-index.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/upstyle.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/pub.css}" />
+</head>
+<body>
+<div id="container" class="abstract-wrap meeting-wrap">
+	<!--顶部的logo-->
+		<div class="top-logo">
+			<img th:src="@{/assets/front/img/top-logo.png}" alt="logo" title="logo" />
+		</div>
+		<!--顶部导航栏-->
+		<div class="top-nav">
+			<div class="nev">
+				<!--导航栏-->
+				<ul class="nev-ul">
+					<li><a th:href="@{/front/index}">门户首页</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=19}">最新动态</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=31}">财务报告</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=32}">企业文化</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=46}">员工生活</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=44}">专利信息</a></li>
+					<li><a th:href="@{/front/companyProfile}">公司简介</a></li>
+				</ul>
+			</div>
+			<div class="nev-menu-item"></div>
+		</div>
+	    <div class="register">
+	        <div class="fl place">
+	        	<!--当前位置-->
+	        	<img th:src="@{/assets/front/img/icon-weizhi.png}">
+	        	当前位置：<a th:href="@{/front/index}"><font color="blue">首页</font></a>&gt;<a href="javascript:window.location.reload();"><font color="blue">搜索结果</font></a>
+	        </div>
+	    </div>
+		<div class="main" style="font-size: 16px; line-height: 38px; letter-spacing: 2px;">
+			<div id="print">
+				<h1>搜索结果
+				</h1>
+				<div class="source"> 
+					<ul class="fl">
+						<span class="fl">字号</span>
+						<li class="big">大</li>
+						<li class="mid">中</li>
+						<li class="small red">小</li>
+					</ul>
+					<span>来源：搜索结果</span>
+				</div>
+				<div class="cont">
+				<div class="page1 show">
+					<ul>
+						<li th:each="article,var:${list}">
+							<a th:href="@{'/front/articleDetailById?articleId='+${article.id}}"><th:block th:text="${article.title}"></th:block><span class="fr" th:text="${#dates.format(article.releasTime,'yyyy-MM-dd')}"></span></a>
+						</li>
+					</ul>
+				</div>
+				</div>
+			</div>
+            <hr>
+			<div>
+				 <!-- <input type="button" id="" value="收藏" class="yellow" rel="sidebar" onclick="AddFavorite(window.location,window.title)"> -->
+				 <input type="button" value="打印" class="green" onclick="printPage()" style="left:926px;">
+	             <a href="/front/index" class="blue"><span>关闭</span></a>
+	        </div>
+		</div>
+		<div class="footer">
+			<p>建议使用IE11及以上版本&nbsp;&nbsp;地址：秦皇岛市海港区迎宾路155号邮编066000&nbsp;&nbsp;&nbsp;&nbsp;建议采用1024*768来浏览</p>
+		</div>
+</div>
+</body>
+</html>

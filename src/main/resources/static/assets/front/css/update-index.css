@@ -1,0 +1,85 @@
+/*导航栏样式*/
+.nev {
+	width: 1200px;
+	padding-left: 0px;
+}
+
+.nev-ul>li {
+	width: 170px;
+	line-height: 36px;
+	position: relative;
+  	display: inline-block;
+}
+
+.nev-ul>li>a:hover {
+	color: #ff0000;
+	background: url(../img/nav-hover.png) no-repeat 33px 5px;
+}
+
+.nev-ul>li.ahover2>a {
+	color: #333;
+	background: url(../img/nav-hover.png) no-repeat 33px 5px;
+}
+
+.nev-menu-item {
+	height: 7px;
+}
+
+/* .nev ul li ul{
+  	display: none; 
+  	position: absolute;
+  	background-color: #ff0080;
+  	background-size: 80% 80%;
+  
+} */
+ /* .nevm1{
+	display: none; 
+  	position: relative;
+  	background-color: #ffffff;
+  	color:black;
+  	background-size: 100% 100%;
+}  */
+/* .nev ul li ul li{
+	position: relative;
+	float: left;
+	text-align: centen;
+	background-size: 100% 80%; 
+} */
+
+.top-logo {
+	height: 120px;
+}
+
+.top-logo img {
+	width: 696px;
+	height: 80px;
+	position: relative;
+	top: 20px;
+}
+
+.video-left {
+	width: 48%;
+	float: left;
+}
+
+.video-right {
+	width: 48%;
+	float: right;
+}
+
+.clear-both {
+	clear: both;
+}
+
+.top-margin-50 {
+	margin-top: 10px;
+}
+
+.video-item-wrap {
+	width: 100%;
+}
+
+.video-item {
+	margin: 0 auto;
+	text-align: center;
+}

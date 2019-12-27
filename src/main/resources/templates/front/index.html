@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>门户首页</title>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/reset.css}" href="../../static/assets/front/css/reset.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/style.css}" href="../../static/assets/front/css/style.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/animate.css}" href="../../static/assets/front/css/animate.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/swiper.min.css}" href="../../static/assets/front/css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/update-index.css}" href="../../static/assets/front/css/update-index.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/upstyle.css}" href="../../static/assets/front/css/upstyle.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/front/css/lunbo.css}" href="../../static/assets/front/css/lunbo.css">
+<script th:src="@{/assets/js/jquery-1.9.1.min.js}" src="../../static/assets/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/js/bootstrap.min.js}" src="../../static/assets/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/front/js/index.js}" src="../../static/assets/front/js/index.js" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/front/js/resize.js}" src="../../static/assets/front/js/resize.js" type="text/javascript"charset="utf-8"></script>
+<script th:src="@{/assets/front/js/swiper.min.js}" src="../../static/assets/front/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/front/js/wow.min.js}" src="../../static/assets/front/js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/assets/front/js/layer.js}"  src="../../static/assets/front/js/layer.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="container">
+		<!--顶部的logo-->
+		<div class="top-logo">
+			<img th:src="@{/assets/front/img/top-logo.png}"  src="../../static/assets/front/img/top-logo.png"  alt="logo" title="logo" />
+		</div>
+		<!--顶部导航栏-->
+		<div class="top-nav">
+			<div class="nev">
+				<!--导航栏-->
+				<ul class="nev-ul">
+					<li class="ahover2"><a th:href="@{/front/index}" href="index.html">门户首页</a></li>
+					
+					<li><a th:href="@{/front/articleMore?columnId=19}" href="article-more.html">最新动态</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=31}" href="article-more.html">财务报告</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=32}" href="article-column.html">企业文化</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=46}" href="article-column.html">员工生活</a></li>
+					<li><a th:href="@{/front/articleMore?columnId=44}" href="article-more.html">专利信息</a></li>
+					
+					<li><a th:href="@{/front/companyProfile}" href="company-profile.html">公司简介</a></li>
+				</ul>
+			</div>
+			<div class="nev-menu-item"></div>
+		</div>
+		<!--顶部轮播图片-->
+		<div class="pic1">
+			<ul>
+				<li th:each="image ,var : ${pic1List}">
+					<img th:src="@{${image.url}}" />
+				</li>
+			</ul>
+			<div class="arrow">
+						<a href="javascript:void(0)" class="left">&lt;</a> <a href="javascript:void(0)" class="right">&gt;</a>
+					</div>
+					<!--小方点-->
+					<ol>
+					</ol>
+			<!--右边公司口号-->
+			<div class="slogan text-l" style="text-align: center;">
+					<p>讲团结     重实绩</p>
+					<p>严管理     促发展</p>
+			</div>
+		</div>
+		<!--搜索-->
+		<div class="register">
+			<form th:action="@{/front/articleSearch}"  method="post" target="_blank">
+				<div class="inline-b">
+					<span id="todayclock"></span>
+					<input class="searchp-inp" type="text" name="word"  id="word" placeholder="输入关键字搜索">
+					<button type="submit" class="search-but"></button>
+				</div>
+			</form>
+		</div>
+		<div class="main">
+			<div class="top-list">
+				<!--左边图片轮播区-->
+				<div class="pic2 fl">
+					<ul>
+						<li th:each="image ,var : ${pic2List}">
+							<a th:href="@{${image.href}}" target="_blank">
+								<img th:src="@{${image.url}}">
+								<span class="gallery-txt">
+									<span class="wd-150" th:text="${image.title}"></span>
+								</span>
+							</a>
+						</li>
+					</ul>
+					<div class="arrow">
+						<a href="javascript:void(0)" class="left">&lt;</a> <a href="javascript:void(0)" class="right">&gt;</a>
+					</div>
+					<!--小方点-->
+					<ol>
+					</ol>
+				</div>
+				<div class="state fr">
+					<div class="tab-head">
+						<p class="fl">
+							 <span></span>&nbsp;<th:block th:text="${topColumn?.name?:'最新动态'}">最新动态</th:block>
+						</p>
+						<div class=" fr pani">
+							<ul class="flex fl"></ul>
+							<a th:href="@{'/front/articleMore?columnId='+${topColumn?.id}}" class="more fr" target="_blank">更多&gt;&gt;</a>
+						</div>
+				</div>
+                    <!-- 最新动态 -->
+					<div class="tab-content">
+						
+						<div class="page1">
+							<ul class="font14">
+								<li th:each="article ,var : ${topColumn.articleList}">
+										<a th:href="@{'/front/articleDetailById?articleId='+${article.id}}" target="_blank">
+										<font>
+											<span class="text-hide txt-overflow"><span class="home-right"></span><th:block th:text="${article.title}"></th:block></span>
+											<span class="day" th:text="${#dates.format(article.releasTime,'yyyy-MM-dd')}"></span>
+										</font>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 中间部分 -->
+			<div class="mid-list">
+		
+				<div class="hgt" th:each="column ,var : ${mainColumnList}" th:style="@{${#strings.isEmpty(column.style)}?'width:320px;':@{${column.style}}}">
+					<div class="bar">
+						<p class="title fl" th:text="${column.name}"></p>
+						<a th:href="@{'/front/articleMore?columnId='+${column.id}}" class="more fr" target="_blank">更多&gt;&gt;</a>
+						<ul class="fl flex">
+							<li class="text-shadow2" th:each="column2 ,var2 : ${column.childNode}" th:text="${column2.name}" th:classappend="${var2.index==0}?'selected2':''"></li>
+						
+						</ul>
+					</div>
+					<th:block th:if="${#lists.isEmpty(column.childNode)}">
+						<div class="info">
+								<ul class="font14">
+										<li th:each="article ,var3 : ${column.articleList}">
+											<a th:href="@{'/front/articleDetailById?articleId='+${article.id}}" target="_blank">
+												<font>
+													<span class="text-hide" style="width:210px;">
+														<span class="home-dot"></span>
+														<th:block th:text="${article.title}"></th:block>
+													</span>
+													<span class="fr" th:text="${#dates.format(article.releasTime,'yyyy-MM-dd')}"></span>
+												</font>
+											</a>
+									   </li>
+								</ul>
+						 </div>
+					</th:block>
+					<th:block th:if="${column.childNode!=null}">
+						<div class="tab-content">
+							<div class="info countSum" th:each="column2 ,var2 : ${column.childNode}">
+									<ul class="font14">
+											<li th:each="article ,var3 : ${column2.articleList}">
+												<a th:href="@{'/front/articleDetailById?articleId='+${article.id}}" target="_blank">
+													<font>
+														<span class="text-hide" style="width:405px;">
+															<span class="home-dot"></span>
+															<th:block th:text="${article.title}"></th:block>
+														</span>
+														<span class="fr" th:text="${#dates.format(article.releasTime,'yyyy-MM-dd')}"></span>
+													</font>
+												</a>
+										   </li>
+									</ul>
+							 </div>
+						</div>
+					</th:block>
+				</div>
+		</div>
+		<!-- 底部 -->
+		<div class="bottom-list">
+			<div class="pic3">
+				<ul>
+					<li th:each="image ,var : ${pic3List}" th:style="${var.index==0}?'':'display:none'">
+						<img th:src="@{${image.url}}">
+					</li>
+				</ul>
+				<p style="font-family: ygy;">不忘初心        牢记使命</p>
+			</div>
+				<div class="pic3" style="display: none">
+					<div class="swiper-container swiper-container-horizontal">
+						<div class="swiper-wrapper" style="transition-duration: 0ms;">
+						</div>
+					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+				</div>
+				<div class="under-Info">
+					<div class="tab">
+						<ul>
+							<li class="fl" th:each="column ,var : ${bottomColumnList}" th:classappend="${var.index==0}?'selected3':''" th:text="${column.name}"></li>
+						</ul>
+					</div>
+					<div class="content">
+			
+							<div class="ks show"  th:each="column ,var : ${bottomColumnList}"  th:style="${var.index==0}?'':'display:none'">
+								<ul>
+									<li th:each="article ,var2 : ${column.articleList}"><a th:href="@{'/front/articleDetailById?articleId='+${article.id}}" target="_blank" th:text="${article.title}"></a></li>
+								</ul>
+							</div>
+					</div>
+				</div>
+			</div>
+		<div class="footer">
+			<p>建议使用IE11及以上版本&nbsp;&nbsp;地址：秦皇岛市海港区迎宾路号 邮编066000&nbsp;&nbsp;&nbsp;&nbsp;建议采用1024*768来浏览</p>
+		</div>
+</div>
+
+</body>
+</html>

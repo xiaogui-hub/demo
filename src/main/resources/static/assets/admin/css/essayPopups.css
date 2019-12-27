@@ -1,0 +1,85 @@
+/*文章上传审核类样式*/
+             .fdf{
+              	width: 14.4rem;
+              	height: 11.81rem;
+				background: url(../img/bc-img3.png) no-repeat;
+		        background-size: 100% 100%;
+				display: none;
+			    position: absolute;
+	            left: 2.4rem;
+			    top: 0rem;
+			    z-index: 999;
+              }
+              .popups{
+				    color: #013e7f;
+                	width: 11.38rem;
+                	height: 9.04rem;
+                	font-size: 0.14rem;
+                	margin: 0.05rem auto;
+                	border: 1px solid #4c92db;
+                	background-color: #eaeaea;
+                }
+              .popups-title{
+                	font-size: 0.16rem; 
+                	height: 0.58rem;
+                	line-height: 0.49rem;
+                	font-weight: bold;
+                	color: #044676;
+                	text-align: center;
+                	background: url(../img/line.png) no-repeat 4.5rem 0.44rem;
+                }
+                .essay{
+                	//width: 11rem;
+                	height: 8rem;
+                	color: #333;
+                	font-weight: bold;
+                	margin: 0.12rem auto;
+                }
+                .essay p{
+                	height: 0.44rem;
+                	line-height: 0.44rem;
+                	padding-left: 0.22rem;
+                	border-bottom: 1px solid #c5d5e5;
+                }
+                .essay p img{
+                	width: 0.1rem;
+                	height: 0.1rem;
+                }
+                .essay select{
+                	width: 1.27rem;
+                	height: 0.31rem;
+                	border: 1px solid #818181;
+                }
+               .essay img+select,.essay select+select{
+                	margin-left: 0.28rem;
+                }
+                .essay p input[type=text]{
+                	height: 0.31rem;
+                	border: 1px solid #818181;
+                }
+                .longInput{
+                	width: 4.79rem;
+                }
+                #writer{
+                	width: 2.51rem;
+                }
+               .essay input[type=checkbox]{
+                	margin-left: 0.12rem;
+                	margin-right: 0.03rem;
+                	position: relative;
+                	top: 0.02rem;
+                }
+                .wind{
+                	/*width: 9.56rem;*/
+                	width: 11rem;
+                	height: 3.59rem;
+                	margin: 0.07rem auto;
+                	/*margin: 0.07rem 0.16rem 0.2rem 1.29rem;*/
+                	background-color: yellowgreen;
+                }
+                .under{
+                	/*padding: 0 0.16rem 0 1.29rem;*/
+                	 width: 11rem;
+                	 margin: 0.07rem auto;
+                }
+                 

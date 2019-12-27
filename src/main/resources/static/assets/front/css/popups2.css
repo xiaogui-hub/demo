@@ -1,0 +1,75 @@
+/*弹出窗口样式*/
+              .fdf{
+              	width: 14.4rem;
+              	height: 11.81rem;
+				background: url(../img/bc-img3.png) no-repeat;
+				background-size: 100% 100%;
+				display: none;
+				position: absolute;
+				left: 2.4rem;
+				top: 0rem;
+				z-index: 999;
+              }
+              .popups{
+				width: 5.07rem;
+				height: 3.75rem;
+				font-size: 0.14rem;
+				font-family: "微软雅黑";
+				border: 1px solid #b7d1ea;
+                	margin: 2rem auto;
+                	background-color: #fff;
+			}
+			.popups .popups-title{
+                	font-size: 0.16rem; 
+                	height: 0.58rem;
+                	line-height: 0.49rem;
+                	font-weight: bold;
+                	color: #044676;
+                	text-align: center;
+                	background: url(../img/line.png) no-repeat 1.3rem 0.44rem;
+                }
+               .popups ul{
+                	padding: 0.1rem 0.3rem;
+                	border-bottom: 1px solid #b7d1ea;
+                }
+               .popups li{
+                	height: 0.55rem;
+                	letter-spacing: 0.03rem;
+                }
+               .popups li input{
+                	height: 0.28rem;
+                	border: 1px solid #9c9c9c;
+                	padding-left:0.05rem
+                }
+                #software{
+                	width: 3.21rem;
+                }
+               .popups input[type=file]{
+                	display: none;
+                }
+              .popups label{
+                	display: inline-block;
+                	width: 0.84rem;
+                	height: 0.3rem;
+                	text-align: center;
+                	line-height: 0.30rem;
+                	letter-spacing: normal;
+                	border: 1px solid #044676;
+                	border-radius: calc(3px);
+                }
+               .popups p input{
+                	width: 0.49rem;
+                	height: 0.25rem;
+                	border: 1px solid #044676;
+                	border-radius: calc(3px);
+                	background-color: #fff;
+                	margin-left: 0.14rem;
+                	margin-top: 0.20rem;
+                }
+              .popups input[name=add]{
+                	color: #fff;
+                	margin-left: 0.32rem;
+                	border: 0;
+                	background: url(../img/btn-img.png) no-repeat;
+                	background-size: 100% 100%;
+                }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<configuration status="DEBUG">
+<!-- 先定义所有的appender -->
+        <appenders>
+    	<!--输出控制台的配置-->
+        <console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] %C - %m%n"/>
+        </console>
+		<!-- 设置日志格式并配置日志压缩格式 -->
+        <RollingFile name="RollingFileInfo" fileName="D:/log/oa.log" filePattern="D:/log/logback/${date:yyyy-MM}/oa-%d{yyyy-MM-dd}-%i.log.gz">
+            <Filters>
+                <ThresholdFilter level="INFO"/>
+                <ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+            <!--
+                %d{yyyy-MM-dd HH:mm:ss, SSS} : 日志生产时间
+                %p : 日志输出格式
+                %c : logger的名称
+                %m : 日志内容，即 logger.info("message")
+                %n : 换行符
+                %C : Java类名
+                %L : 日志输出所在行数
+                %M : 日志输出所在方法名
+                hostName : 本地机器名
+                hostAddress : 本地ip地址
+             -->
+            <PatternLayout pattern="[%p] [%d{yyyy-MM-dd HH:mm:ss SSS}] %C - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="20 MB"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="RollingFileError" fileName="E:/log/oa.log" filePattern="E:/log/logback/${date:yyyy-MM}/oa-%d{yyyy-MM-dd}-%i.log.gz">
+            <ThresholdFilter level="ERROR"/>
+            <PatternLayout pattern="[%p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] %C - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="20 MB"/>
+            </Policies>
+        </RollingFile>
+    </appenders>
+	<!--然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
+    <loggers>
+		<!-- 建立一个默认的root的logger -->
+        <root level="info">
+            <appender-ref ref="RollingFileInfo"/>
+            <appender-ref ref="RollingFileError"/>
+			<appender-ref ref="Console" />
+        </root>
+    </loggers>
+</configuration>

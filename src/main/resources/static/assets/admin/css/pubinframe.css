@@ -1,0 +1,22 @@
+/* 
+a{
+	text-decoration: none;
+	
+}
+
+table a:visited {color: red;}  已访问的链接
+
+ */
+
+
+table a:hover { 
+text-decoration:none; 
+} 
+table a:active { 
+    color: #337ab7;
+
+} 
+
+
+table a{ color: #337ab7;}
+table a:hover,table a:focus,table .maincolor,table .maincolor a{color:red}
